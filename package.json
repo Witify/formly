@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/witify/formly#readme",
   "dependencies": {
-    "vue": "^2.5.13"
+    "vue": "2.*"
   },
   "devDependencies": {
     "ava": "^0.25.0",
