@@ -17,6 +17,7 @@ function FormList (schema) {
       }
     },
     methods: {
+      
       /**
        * Append a multiple containers to the list
        */

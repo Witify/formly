@@ -31,6 +31,11 @@ function FormContainer (schema) {
       return data
     },
     methods: {
+
+      /**
+       * Add data and generates the good Form Elements 
+       * from the data attribute
+       */
       setData (data) {
         Object.keys(this.$data).map((key, index) => {
           if (this.$data[key].$options.name === 'FormElement') {
@@ -49,6 +54,10 @@ function FormContainer (schema) {
           }
         })
       },
+
+      /**
+       * Retrieve the data as json
+       */
       getData () {
         let _data = {}
         Object.keys(this.$data).map((key, index) => {

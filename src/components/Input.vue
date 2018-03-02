@@ -28,7 +28,7 @@
 
 <script>
 
-import { Form } from '../Form'
+import { Form } from '../services/Form'
 
 export default {
     props: {
@@ -108,7 +108,7 @@ export default {
             this.formElement.clearErrors()
         },
         change() {
-            this.$formly.store.setMutated(true)
+            this.$form.store.setMutated(true)
             this.resetErrors()
             this.$emit('change')
         },

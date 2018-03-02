@@ -1,7 +1,11 @@
 <template>
-    <b-select icon="earth" v-model="state.locale">
-        <option v-for="(locale, key) in $formly.locales" :value="key" :key="key">{{ locale }}</option>
-    </b-select>
+    <div>
+        <div class="select">
+            <select v-model="state.locale">
+                <option v-for="(locale, key) in $form.config.locales" :value="key" :key="key">{{ locale }}</option>
+            </select>
+        </div>
+    </div>
 </template>
 
 <script>
