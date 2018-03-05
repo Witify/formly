@@ -26,7 +26,16 @@ describe ('FormElement', () => {
 
 describe ('Form', () => {
 
-	it('can create a form', () => {
+	it('does not load when idle', () => {
+		let form = new Form({
+			schema: {
+				name: null
+			}
+		})
+		expect(form.loading).toBe(false)
+	})
+
+	it('loads when sending data', () => {
 		let form = new Form({
 			schema: {
 				name: null
