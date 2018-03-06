@@ -1,5 +1,6 @@
 import { FormContainer } from './FormContainer'
 import Vue from 'vue'
+import { deepCopy } from '../utils/helpers'
 
 function FormList (schema) {
   return new Vue({
@@ -55,6 +56,9 @@ function FormList (schema) {
        * @param string key 
        */
       remove (key) {
+        if (key === undefined) {
+          throw new Error('Unspecified key in FormList.remove(int key)')
+        }
         this.$delete(this.list, key)
       },
 

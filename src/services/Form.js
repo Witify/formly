@@ -71,12 +71,14 @@ class Form {
         base = base
       } else if (base.$options.name === 'FormList') {
         base = base.list
-      } else if (base.$options.name ===  'FormElement') {
+      } else {
         return undefined
       }
 
       if (part in base) {
         base = base[part]
+      } else {
+        return undefined
       }
     }
 

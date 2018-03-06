@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     entry: './src/index.js',
@@ -15,5 +16,9 @@ module.exports = {
                 loader: 'vue-loader',
             }
         ]
-    }
+    },
+    plugins: [
+        new UglifyJsPlugin(),
+        new BundleAnalyzerPlugin()
+    ]
 };

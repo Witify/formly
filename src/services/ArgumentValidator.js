@@ -15,13 +15,13 @@ export default function(args) {
     if (args.schema === undefined) {
       args.schema = {}
     }
+
+    if (args.data === undefined) {
+      args.data = {}
+    }
   
     if (typeof args.schema !== 'object') {
       throw new Error('Invalid argument: schema must be an object in Form constructor');
-    }
-  
-    if (args.data === undefined) {
-      args.data = {}
     }
     
     /**

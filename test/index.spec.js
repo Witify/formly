@@ -1,47 +1,63 @@
-import { mount } from 'vue-test-utils'
-import { FormElement } from '../src/elements/FormElement'
-import { Form } from '../src/services/Form'
 import expect from 'expect'
+import Vue from 'vue'
+import Form from '../src/index'
+import moxios from 'moxios'
+import sinon from 'sinon'
 
-describe ('FormElement', () => {
+describe ('config', () => {
 
-	it('value defaults to a null value', () => {
-		let element = FormElement()
-		expect(element.value).toBe(null)
-	})
+    beforeEach(() => {
+        moxios.install()
+    })
 
-	it('state defaults to idle', () => {
-		let element = FormElement()
-		expect(element.state).toBe('idle')
-	})
+    afterEach(() => {
+        moxios.uninstall()
+    })
 
-	it('can set errors', () => {
-		let element = FormElement()
-		expect(element.state).toBe('idle')
-		element.setErrors(['required'])
-		expect(element.state).toBe('error')
-		expect(element.hasErrors()).toBeTruthy()
-	})
-})
+	it('can set configs', (done) => {
+        var onSuccess = sinon.spy()
+        var onFail = sinon.spy()
+        
+        let locales = {
+            'fr': 'Français',
+            'en': 'English'
+        }
 
-describe ('Form', () => {
+		Vue.use(Form, {
+            locales: locales,
+            locale: 'fr',
+            onFormSuccess: onSuccess,
+            onFormFail: onFail
+        })
 
-	it('does not load when idle', () => {
-		let form = new Form({
-			schema: {
-				name: null
-			}
-		})
-		expect(form.loading).toBe(false)
-	})
-
-	it('loads when sending data', () => {
-		let form = new Form({
-			schema: {
-				name: null
-			}
-		})
-		form.post('http://google.com')
-		expect(form.loading).toBe(true)
-	})
+        expect(Vue.prototype.$form).not.toBe(undefined)
+        expect(Vue.prototype.$form.config).not.toBe(undefined)
+        expect(Vue.prototype.$form.config.locales).toMatchObject(locales)
+        expect(Vue.prototype.$form.config.locale).toBe('fr')
+        
+        let form = Vue.prototype.$form.create({
+            name: null
+        })
+        moxios.stubRequest('/test', {
+            status: 200,
+            response: {
+                message: 'OK'
+            }
+        })
+        form.post('/test').then(response => {
+            expect(onSuccess.callCount).toBe(1)
+            
+            moxios.stubRequest('/error', {
+                status: 500,
+                response: {
+                    message: 'OK'
+                }
+            })
+            form.post('/error').catch(error => {
+                expect(onFail.callCount).toBe(1)
+                done()
+            })
+        })
+        
+    })
 })

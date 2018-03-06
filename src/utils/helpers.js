@@ -36,3 +36,15 @@ function arrayToObject(array) {
 }
 
 export { arrayToObject }
+
+/**
+ * Converts array to object
+ * 
+ * @param Array array
+ * @return Object 
+ */
+function deepCopy(object) {
+    return JSON.parse(JSON.stringify(object))
+}
+
+export { deepCopy }
