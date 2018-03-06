@@ -1,6 +1,6 @@
 {
   "name": "sprintify-formly",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Vue Formly",
   "main": "src/index.js",
   "engines": {
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/witify/formly#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "0.*",
     "vue": "2.*"
   },
   "devDependencies": {
