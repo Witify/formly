@@ -1,7 +1,7 @@
 os:
   - linux
-
-global:
+env:
+  global:
     - CC_TEST_REPORTER_ID=93dd0517330f5052753016ee57ab1bda81783e9b9a537ac95c8fddcdd8921ee9
 
 sudo: true
