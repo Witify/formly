@@ -1,4 +1,4 @@
-import { FormService } from './form'
+import { FormService } from './Form'
 
 import config, { setOptions } from './utils/config'
 
