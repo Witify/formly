@@ -1,0 +1,17 @@
+os:
+  - linux
+
+sudo: true
+
+services:
+  - mysql
+
+notifications:
+  slack: witify:iQMLWUFW5PW92BUlHsjbysUq
+
+before_script:
+  - yarn
+  - chmod 777 -R storage
+
+script:
+  - npm run coverage
