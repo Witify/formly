@@ -1,12 +1,12 @@
 let config = {
-  locales: [],
-  locale: 'en',
-  onFormFail (response) {
-
-  },
-  onFormSuccess (response) {
-
-  }
+    locales: [],
+    locale: 'en',
+    onFormFail(response) {
+        
+    },
+    onFormSuccess(response) {
+        
+    }
 }
 
 export default config

@@ -3,18 +3,24 @@ import { FormList } from './FormList'
 import Vue from 'vue'
 
 function FormContainer (schema) {
+
   let data = {}
 
   Object.keys(schema).map((key, index) => {
+    
+    // If a FormList (array)
     if (schema[key] !== null && schema[key].constructor === Array) {
-      // If a FormList (array)
       let listContainerSchema = schema[key][0]
       data[key] = FormList(listContainerSchema)
-    } else if (schema[key] !== null && typeof schema[key] === 'object') {
-      // If a FormContainer (object)
+    }
+
+    // If a FormContainer (object)
+    else if (schema[key] !== null && typeof schema[key] === 'object') {
       data[key] = FormContainer(schema[key])
-    } else {
-      // If an FormElement (null)
+    }
+
+    // If an FormElement (null)
+    else {
       data[key] = FormElement()
     }
   })
@@ -27,7 +33,7 @@ function FormContainer (schema) {
     methods: {
 
       /**
-       * Add data and generates the good Form Elements
+       * Add data and generates the good Form Elements 
        * from the data attribute
        */
       setData (data) {

@@ -1,30 +1,5 @@
-# sprintify-formly
+# Sprintify Formly
 
-> A Vue.js project
+[![Maintainability](https://api.codeclimate.com/v1/badges/fa6a2944147990456773/maintainability)](https://codeclimate.com/github/Witify/formly/maintainability)
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+[![Test Coverage](https://api.codeclimate.com/v1/badges/fa6a2944147990456773/test_coverage)](https://codeclimate.com/github/Witify/formly/test_coverage)

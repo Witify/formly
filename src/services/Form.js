@@ -1,6 +1,6 @@
-/* ---------------------------------------------------
+/*---------------------------------------------------
   * Form (Rapid Form creation class)
-  * constructor arguments:
+  * constructor arguments: 
   * - schema
   *
   * Schema represents how data is parsed
@@ -9,9 +9,11 @@
   * []   FormList (contains multiple FormContainers)
   * null FormElement (contains single value)
   *
----------------------------------------------------- */
-
+----------------------------------------------------*/
+  
 import { FormContainer } from '../elements/FormContainer'
+import { FormList } from '../elements/FormList'
+import { FormElement } from '../elements/FormElement'
 import { FormSuccess } from './FormSuccess'
 import { FormFail } from './FormFail'
 import formArgsValidation from './ArgumentValidator'
@@ -43,7 +45,7 @@ class Form {
 
     // Schema creation
     this.data = FormContainer(args.schema)
-
+    
     // Fill data
     this.data.setData(args.data)
   }
@@ -51,13 +53,13 @@ class Form {
   /**
    * Retrive all data from form as simple object
    */
-  getJsonData () {
+  getJsonData() {
     return this.data.getData()
   }
 
   /**
    * Find the FormElement from a string in the form
-   *
+   * 
    * @param String name
    */
   get (name) {
@@ -66,7 +68,7 @@ class Form {
     for (let i = 0; i < parts.length; i++) {
       let part = parts[i]
       if (base.$options.name === 'FormContainer') {
-        // do noting
+        base = base
       } else if (base.$options.name === 'FormList') {
         base = base.list
       } else {
@@ -85,52 +87,52 @@ class Form {
 
   /**
    * Make a post request
-   *
-   * @param String url
-   * @param Object data
+   * 
+   * @param String url 
+   * @param Object data 
    */
-  post (url, data = null) {
+  post(url, data = null) {
     return this.submit('post', url, data)
   }
 
   /**
    * Make a put request
-   *
-   * @param String url
-   * @param Object data
+   * 
+   * @param String url 
+   * @param Object data 
    */
-  put (url, data = null) {
+  put(url, data = null) {
     return this.submit('put', url, data)
   }
 
   /**
    * Make a patch request
-   *
-   * @param String url
-   * @param Object data
+   * 
+   * @param String url 
+   * @param Object data 
    */
-  patch (url, data = null) {
+  patch(url, data = null) {
     return this.submit('patch', url, data)
   }
 
   /**
    * Make a delete request
-   *
-   * @param String url
-   * @param Object data
+   * 
+   * @param String url 
+   * @param Object data 
    */
-  delete (url, data = null) {
+  delete(url, data = null) {
     return this.submit('delete', url, data)
   }
 
   /**
    * Submit a request
-   *
-   * @param String requestType [post, patch, put, delete]
-   * @param String url
-   * @param Object data
+   * 
+   * @param String requestType [post, patch, put, delete] 
+   * @param String url 
+   * @param Object data 
    */
-  submit (requestType, url, data = null) {
+  submit(requestType, url, data = null) {
     this.loading = true
     return new Promise((resolve, reject) => {
       axios[requestType](url, data || this.getJsonData())
@@ -147,10 +149,10 @@ class Form {
 
   /**
    * Actions to do on successful request
-   *
-   * @param Object response
+   * 
+   * @param Object response 
    */
-  onSuccess (response) {
+  onSuccess(response) {
     this.formSuccess.handle(response)
     this.sendOnce = true
     this.loading = false
@@ -158,10 +160,10 @@ class Form {
 
   /**
    * Actions to do on failed request
-   *
-   * @param Object response
+   * 
+   * @param Object response 
    */
-  onFail (response) {
+  onFail(response) {
     this.formFail.handle(response)
     this.sendOnce = true
     this.loading = false

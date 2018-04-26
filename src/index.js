@@ -9,32 +9,33 @@ import InputDefault from './components/InputDefault.vue'
 
 export default {
 
-  install (Vue, options) {
-    /*
+    install (Vue, options) {
+
+        /*
         |--------------------------------------------------------------------------
         | Set Config Options
         |--------------------------------------------------------------------------
         */
 
-    setOptions(Object.assign(config, options))
+        setOptions(Object.assign(config, options))
 
-    /*
+        /*
         |--------------------------------------------------------------------------
         | Prototypes
         |--------------------------------------------------------------------------
         */
 
-    Vue.prototype.$form = new FormService()
+        Vue.prototype.$form = new FormService()
 
-    /*
+        /*
         |--------------------------------------------------------------------------
         | Components
         |--------------------------------------------------------------------------
         */
 
-    Vue.component('v-input', Input)
-    Vue.component('v-input-locale', InputLocale)
-    Vue.component('v-form-language-selector', LanguageSelector)
-    Vue.component('v-input-default', InputDefault)
-  }
+        Vue.component('v-input', Input)
+        Vue.component('v-input-locale', InputLocale)
+        Vue.component('v-form-language-selector', LanguageSelector)
+        Vue.component('v-input-default', InputDefault)
+    }
 }

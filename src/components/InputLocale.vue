@@ -1,13 +1,13 @@
 <template>
   <div>
-    <v-input
+    <v-input 
       v-for="(l, i) in $form.config.locales"
       :key="i"
       v-show="state.locale == i"
-      :name="name + '.' + i"
-      :helpText="helpText" :label="getLabel"
-      :component="component"
-      :props="props"
+      :name="name + '.' + i" 
+      :helpText="helpText" :label="getLabel" 
+      :component="component" 
+      :props="props" 
       locale
     ></v-input>
     <div></div>
@@ -16,6 +16,7 @@
 
 <script>
 
+import { Form } from '../services/Form'
 import store from '../store'
 
 export default {
@@ -43,9 +44,9 @@ export default {
     }
   },
   data () {
-    return {
-      state: store.state
-    }
+      return {
+          state: store.state
+      }
   },
   computed: {
     getLabel () {
