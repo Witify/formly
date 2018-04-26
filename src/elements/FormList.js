@@ -18,7 +18,7 @@ function FormList (schema) {
       }
     },
     methods: {
-      
+
       /**
        * Append a multiple containers to the list
        */
@@ -39,8 +39,8 @@ function FormList (schema) {
 
       /**
        * Set a specific numeric key to the list
-       * 
-       * @param string key 
+       *
+       * @param string key
        */
       setKey (key) {
         let container = FormContainer(this.schema)
@@ -52,8 +52,8 @@ function FormList (schema) {
 
       /**
        * Remove a specific key from the list
-       * 
-       * @param string key 
+       *
+       * @param string key
        */
       remove (key) {
         if (key === undefined) {
@@ -64,7 +64,7 @@ function FormList (schema) {
 
       /**
        * Check if list is empty
-       * 
+       *
        * @return boolean
        */
       any () {

@@ -2,16 +2,14 @@ import store from '../store'
 import config from '../utils/config'
 
 class FormSuccess {
-
-  constructor(form) {
+  constructor (form) {
     this.form = form
   }
 
   /**
    * Handles a form success
    */
-  handle(response) {
-
+  handle (response) {
     // Set form as "not mutated"
     store.setMutated(false)
 

@@ -13,10 +13,10 @@
 import store from '../store'
 
 export default {
-    data () {
-        return {
-            state: store.state
-        }
-    },
+  data () {
+    return {
+      state: store.state
+    }
+  }
 }
 </script>
