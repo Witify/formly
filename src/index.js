@@ -2,6 +2,11 @@ import { FormService } from './Form'
 
 import config, { setOptions } from './utils/config'
 
+import Input from './components/Input.vue'
+import InputLocale from './components/InputLocale.vue'
+import LanguageSelector from './components/LanguageSelector.vue'
+import InputDefault from './components/InputDefault.vue'
+
 export default {
 
     install (Vue, options) {
@@ -28,8 +33,9 @@ export default {
         |--------------------------------------------------------------------------
         */
 
-        Vue.component('v-input', require('./components/Input.vue'))
-        Vue.component('v-input-locale', require('./components/InputLocale.vue'))
-        Vue.component('v-form-language-selector', require('./components/LanguageSelector.vue'))
+        Vue.component('v-input', Input)
+        Vue.component('v-input-locale', InputLocale)
+        Vue.component('v-form-language-selector', LanguageSelector)
+        Vue.component('v-input-default', InputDefault)
     }
 }

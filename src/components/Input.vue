@@ -2,10 +2,12 @@
     <div class="field">
 
         <!-- Label -->
-        <label v-if="getLabel()" class="label" :for="name">
-            <span v-if="locale" class="icon is-small"><i class="mdi mdi-earth"></i></span>
-            <span>{{ getLabel() }}</span>
-        </label>
+        <slot name="label" :label="trueLabel">
+            <label v-if="trueLabel" class="label" :for="name">
+                <span v-if="locale" class="icon is-small"><i class="mdi mdi-earth"></i></span>
+                <span>{{ trueLabel }}</span>
+            </label>
+        </slot>
 
         <!-- Input Field -->
         <component
@@ -18,10 +20,14 @@
         </component>
         
         <!-- Errors -->
-        <p v-for="(error, i) of formElement.errors" :key="i" class="help is-danger">{{ error }}</p>
+        <slot name="errors" :errors="formElement.errors">
+            <p v-for="(error, i) of formElement.errors" :key="i" class="help is-danger">{{ error }}</p>
+        </slot>
 
         <!-- Helpblock -->
-        <div v-if="helpText != ''" class="help">{{ helpText }}</div>
+        <slot name="help" :help="helpText">
+            <div v-if="helpText != ''" class="help">{{ helpText }}</div>
+        </slot>
 
     </div>
 </template>
@@ -46,7 +52,7 @@ export default {
         },
         component: {
             required: false,
-            default: 'v-input-text'
+            default: 'v-input-default'
         },
         locale: {
             default: false,
@@ -86,21 +92,17 @@ export default {
                 throw new Error('Invalid index: ' + this.name + ' is not a FormElement')
             }
             return element
+        },
+        trueLabel() {
+            if (this.label === undefined) {
+                let parts = this.name.split('.')
+                let last = parts.pop()
+                return this.capitalize(last.replace(/_/g, " ").toLowerCase())
+            }
+            return this.label
         }
     },
     methods: {
-        getLabel() {
-            if (this.label === undefined) {
-                if (__('label.' + this.name) !== null) {
-                    return __('label.' + this.name)
-                }
-
-                let parts = this.name.split('.')
-                let last = parts.pop()
-                return last.replace(/_/g, " ").toLowerCase().capitalize()
-            }
-            return this.label
-        },
         getPlaceholder() {
             return this.placeholder
         },
@@ -114,6 +116,9 @@ export default {
         },
         hasError() {
             return this.formElement.hasErrors()
+        },
+        capitalize(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
         }
     }
 }
