@@ -50,6 +50,29 @@ function FormElement () {
        */
       hasErrors () {
         return this.errors.length > 0
+      },
+
+      /**
+       * Set data
+       * 
+       * @param Object data
+       * @return void 
+       */
+      setData(data) {
+        if (data !== undefined) {
+          this.value = data
+        } else {
+          this.value = null
+        }
+      },
+
+      /**
+       * Return Json data
+       * 
+       * @return data
+       */
+      getData() {
+        return this.value
       }
     }
   })

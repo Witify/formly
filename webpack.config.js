@@ -6,19 +6,28 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'index.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.js',
+    libraryTarget: 'umd',
+  },
+  externals: {
+    axios: 'axios',
+    vue: 'vue'
   },
   module: {
     loaders: [
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
       }
     ]
   },
   plugins: [
     new UglifyJsPlugin(),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ]
 };

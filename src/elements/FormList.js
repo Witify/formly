@@ -69,6 +69,34 @@ function FormList (schema) {
        */
       any () {
         return Object.keys(this.list).length > 0
+      },
+
+      /**
+       * Set data unto a list
+       * 
+       * @param Object data
+       * @return void
+       */
+      setData (data) {
+        if (data !== undefined && typeof data === 'object') {
+          Object.keys(data).map((i, i_) => {
+            this.setKey(i)
+            this.list[i].setData(data[i])
+          })
+        }
+      },
+
+      /**
+       * Get Json data value
+       * 
+       * @return Object data
+       */
+      getData() {
+        let data = {}
+        Object.keys(this.list).map((i, i_) => {
+          data[i] = this.list[i].getData()
+        })
+        return data
       }
     }
   })
