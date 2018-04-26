@@ -67,12 +67,8 @@ class Form {
     let base = this.data
     for (let i = 0; i < parts.length; i++) {
       let part = parts[i]
-      if (base.$options.name === 'FormContainer') {
-        base = base
-      } else if (base.$options.name === 'FormList') {
+      if (base.$options.name === 'FormList') {
         base = base.list
-      } else {
-        return undefined
       }
 
       if (part in base) {
