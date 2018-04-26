@@ -1,4 +1,4 @@
-# Sprintify Form
+# Sprintify Formly
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/fa6a2944147990456773/maintainability)](https://codeclimate.com/github/Witify/formly/maintainability)
 

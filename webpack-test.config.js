@@ -11,20 +11,20 @@ module.exports = {
   module: {
     rules: [].concat(
       isCoverage ? {
-          test: /\.(js|ts)/,
-          include: path.resolve('src'), // instrument only testing sources with Istanbul, after ts-loader runs
-          loader: 'istanbul-instrumenter-loader'
+        test: /\.(js|ts)/,
+        include: path.resolve('src'), // instrument only testing sources with Istanbul, after ts-loader runs
+        loader: 'istanbul-instrumenter-loader'
       }: [],
       {
-          test: /.js$/,
-          exclude: /(node_modules|bower_components)/,
-          loader: 'babel-loader',
+        test: /.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
       },
       {
         test: /.vue$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'vue-loader',
-    }
+      }
     )
   },
   target: 'node',  // webpack should compile node compatible code
