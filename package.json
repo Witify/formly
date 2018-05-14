@@ -1,6 +1,6 @@
 {
   "name": "sprintify-formly",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vue Formly",
   "main": "dist/index.js",
   "engines": {
