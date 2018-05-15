@@ -1,14 +1,9 @@
 import { FormContainer } from './FormContainer'
 import Vue from 'vue'
-import { deepCopy } from '../utils/helpers'
+import { deepCopy, uuid } from '../utils/helpers'
 
 let config = {
   name: 'FormList',
-  computed: {
-    lastKey () {
-      return (this.last - 1).toString()
-    }
-  },
   methods: {
     
     /**
@@ -25,8 +20,7 @@ let config = {
      */
     addOne () {
       let container = FormContainer(this.schema)
-      this.$set(this.list, this.last, container)
-      this.last++
+      this.$set(this.list, uuid(32), container)
     },
 
     /**
@@ -37,9 +31,6 @@ let config = {
     setKey (key) {
       let container = FormContainer(this.schema)
       this.$set(this.list, key, container)
-      if (key >= this.last) {
-        this.last = parseInt(key) + 1
-      }
     },
 
     /**
@@ -97,7 +88,6 @@ function FormList (schema) {
   config.data = function() {
     return {
       schema: deepCopy(schema),
-      last: 0,
       list: {}
     }
   }

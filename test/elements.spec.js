@@ -55,31 +55,23 @@ describe ('FormList', () => {
 		let list = FormList(schema)
 		list.add()
 		expect(Object.keys(list.list).length).toBe(1)
-		expect(list.list[0].name.$options.name).toBe('FormElement')
-		expect(list.list[0].name.value).toBe(null)
+		expect(list.list[Object.keys(list.list)[0]].name.$options.name).toBe('FormElement')
+		expect(list.list[Object.keys(list.list)[0]].name.value).toBe(null)
 	})
 
 	it('can add multiple elements', () => {
 		let list = FormList(schema)
 		list.add(4)
 		expect(Object.keys(list.list).length).toBe(4)
-		expect(list.list[3].name.$options.name).toBe('FormElement')
-		expect(list.list[3].name.value).toBe(null)
-	})
-
-	it('returns the correct last key', () => {
-		let list = FormList(schema)
-		expect(list.lastKey).toBe('-1')
-		list.add(4)
-		expect(Object.keys(list.list).length).toBe(4)
-		expect(list.lastKey).toBe('3')
+		expect(list.list[Object.keys(list.list)[3]].name.$options.name).toBe('FormElement')
+		expect(list.list[Object.keys(list.list)[3]].name.value).toBe(null)
 	})
 
 	it('can remove an element', () => {
 		let list = FormList(schema)
 		list.add()
 		expect(list.any()).toBeTruthy()
-		list.remove(0)
+		list.remove(Object.keys(list.list)[0])
 		expect(list.any()).toBeFalsy()
 	})
 

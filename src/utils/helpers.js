@@ -48,3 +48,21 @@ function deepCopy(object) {
 }
 
 export { deepCopy }
+
+/**
+ * Makes a unique id
+ * 
+ * @param {*} n 
+ * @return string uuid
+ */
+function uuid(n) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+    for (var i = 0; i < n; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length))
+    return text
+}
+
+export { uuid }
+
