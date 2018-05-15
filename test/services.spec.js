@@ -31,26 +31,6 @@ describe ('ArgumentValidator', () => {
 			expect(e.message).toContain('Invalid argument')
 		}
 	})
-
-	it('coverts arrays to objects', () => {
-		let args = argumentValidator({
-			schema: {
-				categories: [
-					{
-						name: null
-					}
-				]
-			},
-			data: {
-				categories: [
-					{name: 'love'},
-					{name: 'test'},
-				]
-			}
-		})
-		expect(typeof args.data.categories === 'object').toBeTruthy()
-		expect(args.data.categories.constructor === Array).toBeFalsy()
-	})
 })
 
 describe ('Form', () => {
@@ -61,6 +41,11 @@ describe ('Form', () => {
     let client_age = 18
     let category_name = 'Pizza'
     let category_type = 'food'
+    let private_attributes = [
+        'name',
+        'age',
+        'gender'
+    ]
 
     let bigForm;
 
@@ -80,7 +65,8 @@ describe ('Form', () => {
                 categories: [
                     {
                         name: null,
-                        type: null
+                        type: null,
+                        private_attributes: null
                     }
                 ]
             },
@@ -95,12 +81,13 @@ describe ('Form', () => {
                         color: 'Brown'
                     }
                 },
-                categories: {
-                    0: {
+                categories: [
+                    {
                         name: category_name,
-                        type: category_type
+                        type: category_type,
+                        private_attributes: private_attributes
                     }
-                }
+                ]
             }
         })
         moxios.install()
@@ -199,6 +186,8 @@ describe ('Form', () => {
         expect(data.client.animal.color).toBe('Brown')
         expect(data.categories[0].name).toBe(category_name)
         expect(data.categories[0].type).toBe(category_type)
+        expect(data.categories[0].private_attributes.constructor === Array).toBe(true)
+        expect(data.categories[0].private_attributes).toBe(private_attributes)
     })
 
     it('it can find form elements', () => {

@@ -27,7 +27,7 @@ export default function(args) {
     /**
      * Get rid of all arrays
      */
-    recursiveArrayToObject(args.data)
+    // recursiveArrayToObject(args.data)
   
     return args
 }
