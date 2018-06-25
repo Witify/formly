@@ -6,12 +6,14 @@ export default function(form, errors) {
     Object.keys(errors).map((key, index) => {
       // Find the correct FormElement
       let formElement = form.get(key)
-      
-      // Set the error
-      formElement.setErrors(errors[key])
-      
-      // Set correct language in store
-      checkIfLanguageError(key)
+
+      if (formElement !== undefined) {
+        // Set the error
+        formElement.setErrors(errors[key])
+        
+        // Set correct language in store
+        checkIfLanguageError(key)
+      }
     })
   }
 }

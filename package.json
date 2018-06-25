@@ -12,7 +12,7 @@
     "test": "mocha-webpack --webpack-config webpack-test.config.js --require test/setup.js test/**/*.spec.js --watch",
     "test-ci": "mocha-webpack --webpack-config webpack-test.config.js --require test/setup.js test/**/*.spec.js",
     "cover": "cross-env NODE_ENV=coverage nyc --reporter=lcov --reporter=text npm run test-ci",
-    "prepublish": "npm run build"
+    "prepublish": "npm run test-ci && npm run build"
   },
   "repository": {
     "type": "git",
