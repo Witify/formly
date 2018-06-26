@@ -20,7 +20,8 @@ let config = {
      */
     addOne () {
       let container = FormContainer(this.schema)
-      this.$set(this.list, uuid(32), container)
+      let key = (+new Date()) + '-' + uuid(32)
+      this.$set(this.list, key, container)
     },
 
     /**
