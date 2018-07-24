@@ -14,7 +14,8 @@ class FormFail {
     
     // Validation error
     if (response && response.status == 422) {
-      formFailValidation(this.form, response.data.errors)
+      let errors = config.onFormFailValidation(response)
+      formFailValidation(this.form, errors)
     }
 
     // Call custom handler

@@ -4,6 +4,9 @@ let config = {
     onFormFail(response) {
         
     },
+    onFormFailValidation(response) {
+        return response.data.errors
+    },
     onFormSuccess(response) {
         
     }
