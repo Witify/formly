@@ -1,8 +1,8 @@
 <template>
-    <div class="field">
+    <div :class="wrapperClasses">
 
         <!-- Label -->
-        <slot name="label" :label="trueLabel">
+        <slot name="label" :label="trueLabel" v-if="showLabel">
             <label v-if="trueLabel" class="label" :for="name">
                 <span v-if="locale" class="icon is-small"><i class="mdi mdi-earth"></i></span>
                 <span>{{ trueLabel }}</span>
@@ -38,6 +38,10 @@ import { Form } from '../services/Form'
 
 export default {
     props: {
+        wrapperClasses: {
+            default: 'field',
+            type: String
+        },
         name: {
             required: true,
             type: String
@@ -45,6 +49,10 @@ export default {
         helpText: {
             required: false,
             type: String
+        },
+        showLabel: {
+            default: true,
+            type: Boolean
         },
         label: {
             required: false,
