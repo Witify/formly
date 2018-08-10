@@ -8,7 +8,7 @@ export default function(form, errors) {
       // Find the correct FormElement
       let formElement = form.get(key)
 
-      if (formElement !== undefined) {
+      if (formElement !== undefined && formElement.$options.name == 'FormElement') {
         // Set the error
         formElement.setErrors(errors[key])
         
