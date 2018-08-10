@@ -261,6 +261,7 @@ describe ('Form', () => {
             expect(form.loading).toBeFalsy()
             expect(form.sendOnce).toBeTruthy()
             expect(store.state.locale).toBe('en')
+            expect(form.errors['name.en']).toBe('required')
             done()
         })
     })

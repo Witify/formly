@@ -3,6 +3,7 @@ import config from '../utils/config'
 
 export default function(form, errors) {
   if (errors) {
+    form.setErrors(errors)
     Object.keys(errors).map((key, index) => {
       // Find the correct FormElement
       let formElement = form.get(key)

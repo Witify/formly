@@ -164,6 +164,14 @@ class Form {
     this.sendOnce = true
     this.loading = false
   }
+
+  setErrors(errors) {
+    this.errors = errors
+  }
+
+  getErrors() {
+    return this.errors
+  }
 }
 
 export { Form }
