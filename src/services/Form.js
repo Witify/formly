@@ -28,7 +28,8 @@ class Form {
     this.sendOnce = false
     this.loading = false
     this.mutated = false
-
+    this.errors = {}
+    
     // Form response handlers
     this.formFail = new FormFail(this)
     this.formSuccess = new FormSuccess(this)
