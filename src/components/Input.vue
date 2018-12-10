@@ -14,8 +14,8 @@
             :is="component"
             v-bind="$props.props"
             v-model="formElement.value"
-            @change="change()"
-            @input="change()"
+            @change="change"
+            @input="change"
         >
         </component>
         
@@ -117,10 +117,10 @@ export default {
         resetErrors() {
             this.formElement.clearErrors()
         },
-        change() {
+        change(payload) {
             this.$form.store.setMutated(true)
             this.resetErrors()
-            this.$emit('change')
+            this.$emit('change', payload)
         },
         hasError() {
             return this.formElement.hasErrors()
